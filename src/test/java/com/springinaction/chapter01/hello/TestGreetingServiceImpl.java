@@ -15,7 +15,7 @@ public class TestGreetingServiceImpl {
 	log.info("testSayGreeting开始");
 	//ApplicationContext context = new ClassPathXmlApplicationContext("spring/hello.xml");
 	ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-	GreetingService service = context.getBean("greetingService", GreetingServiceImpl.class);
+	GreetingService service = context.getBean("greetingService", GreetingService.class);
 	service.sayGreeting();
 	assertNotNull(service);
 	
