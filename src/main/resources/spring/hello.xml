@@ -4,16 +4,24 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
-	<bean id="greetingService" class="com.springinaction.chapter01.hello.GreetingServiceImpl">
-		<!-- 
-		<property name="greeting">
-			<value>dannis Wu 吴~~!</value>
-		</property>
-		-->
+	<bean id="greetingServiceTarget" class="com.springinaction.chapter01.hello.GreetingServiceImpl"> <!-- scope="prototype" -->
+		<!-- <property name="greeting"> <value>dannis Wu 吴~~!</value> </property> -->
 		<constructor-arg>
 			<value>中国人abc!@#</value>
 		</constructor-arg>
 	</bean>
- 
+
+	<!-- SayGreetingLog advide -->
+	<bean id="sayGreetingLogAdvice" 
+		class="com.springinaction.chapter01.hello.advice.SayGreetingLogBeforeAdvice"></bean>
+
+	<bean id="greetingService" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces" value="com.springinaction.chapter01.hello.GreetingService" />
+		<property name="target" ref="greetingServiceTarget" />
+		<property name="interceptorNames">
+			<list>
+				<value>sayGreetingLogAdvice</value>
+			</list>
+		</property>
+	</bean>
 </beans>

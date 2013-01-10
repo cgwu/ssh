@@ -19,6 +19,12 @@ public class TestGreetingServiceImpl {
 	service.sayGreeting();
 	assertNotNull(service);
 	
+//	log.info(context.hashCode());
+//	for(int i=0;i<10;i++){
+//	    GreetingService stmp = context.getBean("greetingService", GreetingServiceImpl.class);
+//	    log.info(i + ":" + stmp.hashCode());
+//	}
+	
     }
 
 }
