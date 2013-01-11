@@ -13,10 +13,12 @@ public class GreetingServiceImpl implements GreetingService, BeanNameAware {
 	}
 
 	public GreetingServiceImpl() {
+	    System.out.println(this.getClass()+" : 被构造");
 	}
 
 	public GreetingServiceImpl(String greeting) {
 		this.greeting = greeting;
+		System.out.println(this.getClass()+" : 被构造@1");
 	}
 
 	public String getGreeting() {

@@ -2,12 +2,23 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd">
+http://www.springframework.org/schema/beans/spring-beans.xsd" 
+default-autowire="byName" default-lazy-init="true">
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	
 
 	<bean id="greetingServiceTarget" class="com.springinaction.chapter01.hello.GreetingServiceImpl"> <!-- scope="prototype" -->
 		<!-- <property name="greeting"> <value>dannis Wu 吴~~!</value> </property> -->
 		<constructor-arg>
-			<value>中国人abc!@#</value>
+<!-- 			<value>中国人abc!@#</value> -->
+			<value>${db.name}</value>
 		</constructor-arg>
 	</bean>
 
@@ -24,4 +35,9 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 			</list>
 		</property>
 	</bean>
+	
+	<!-- autowire="byName"  -->
+	<bean id="hello.greetingClient" class="com.springinaction.chapter01.hello.GreetingClient" ></bean>
+	
+	
 </beans>
