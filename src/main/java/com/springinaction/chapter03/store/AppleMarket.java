@@ -30,4 +30,9 @@ public class AppleMarket implements Market {
 	public String toString() {
 		return this.getClass()+",isEmpty:"+this.isEmpty;
 	}
+
+	public void buySth() {
+		log.info("Buy Sth called...");
+		
+	}
 }

@@ -4,4 +4,5 @@ public interface Market {
 
 	 public Apple buyApple(Customer cust) throws Exception;
 	 
+	 public void buySth();
 }

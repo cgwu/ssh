@@ -6,7 +6,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd"
 default-autowire="byName" default-lazy-init="true">
 
 	<bean id="appleMarketTarget" class="com.springinaction.chapter03.store.AppleMarket">
-		<property name="isEmpty" value="true"></property>
+		<property name="isEmpty" value="false"></property>
 	</bean>
 
 	<bean id="zhangsan" class="com.springinaction.chapter03.store.Customer">
@@ -21,7 +21,6 @@ default-autowire="byName" default-lazy-init="true">
 	<bean id="brokenExcept" class="com.springinaction.chapter03.store.advice.BrokenExceptionAdvice"></bean>
 	<bean id="soldoutExcept" class="com.springinaction.chapter03.store.advice.SoldOutExceptionAdvice"></bean>
 	
-	
 	<bean id="appleMarket" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<property name="proxyInterfaces" value="com.springinaction.chapter03.store.Market" />
 		<property name="target" ref="appleMarketTarget" />
@@ -33,8 +32,37 @@ default-autowire="byName" default-lazy-init="true">
 <!-- 				<value>onePerCustIncept2</value> -->
 				<value>thankAdvice</value>
 				<value>welcomeAdvice</value>
-				
 			</list>
 		</property>
 	</bean>
+	
+<!-- 	################## use advisor ################### -->
+	<bean id="welcomeAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedName">
+			<value>buy*</value>
+		</property>
+		<property name="advice">
+			<ref bean="welcomeAdvice"/>
+		</property>
+	</bean>
+	<bean id="thankAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedName">
+			<value>buy*</value>
+		</property>
+		<property name="advice">
+			<ref bean="thankAdvice"/>
+		</property>
+	</bean>
+	
+	<bean id="appleMarketUseAdvisor" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces" value="com.springinaction.chapter03.store.Market" />
+		<property name="target" ref="appleMarketTarget" />
+		<property name="interceptorNames">
+			<list>
+				<value>welcomeAdvisor</value>
+				<value>thankAdvisor</value>
+			</list>
+		</property>
+	</bean>
+	
 </beans>

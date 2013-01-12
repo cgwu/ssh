@@ -15,20 +15,22 @@ public class TestAppleMarket {
 	@Test
 	public void test() {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring/market.xml");
-		Market market = context.getBean("appleMarket", Market.class);
+//		Market market = context.getBean("appleMarket", Market.class);
+		Market market = context.getBean("appleMarketUseAdvisor", Market.class);
+		
 		Customer zhangsan = context.getBean("zhangsan", Customer.class);
 		assertNotNull(market);
 		assertNotNull(zhangsan);
 		
-//		log.info(market);
-//		log.info(zhangsan);
-		
+		log.info(market);
+		log.info(zhangsan);
+//		
 		Apple apple =null;
 		try {
 			apple = market.buyApple(zhangsan);
-			Apple apple2 = market.buyApple(zhangsan);
+			market.buySth();
+//			Apple apple2 = market.buyApple(zhangsan);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

@@ -9,11 +9,13 @@ import com.springinaction.chapter03.store.Customer;
 
 public class WelcomeAdvice implements MethodBeforeAdvice {
 	private static Logger log = Logger.getLogger(WelcomeAdvice.class);
-	
+
 	public void before(Method method, Object[] args, Object target)
 			throws Throwable {
-		log.info(method.getName()+"被调用");
-		Customer cust = (Customer)args[0];
-		log.info("欢迎您："+cust.getName());
+		log.info(method.getName() + "被调用");
+		if (args != null && args.length > 0) {
+			Customer cust = (Customer) args[0];
+			log.info("欢迎您：" + cust.getName());
+		}
 	}
 }
