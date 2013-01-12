@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd" 
+default-autowire="byName" default-lazy-init="true">
+
+	<bean id="appleMarketTarget" class="com.springinaction.chapter03.store.AppleMarket">
+		<property name="isEmpty" value="false"></property>
+	</bean>
+
+	<bean id="zhangsan" class="com.springinaction.chapter03.store.Customer">
+		<property name="name" value="张三"></property>
+		<property name="broken" value="false"></property>
+	</bean>
+	
+	<bean id="welcomeAdvice" class="com.springinaction.chapter03.store.advice.WelcomeAdvice"></bean>
+	<bean id="thankAdvice" class="com.springinaction.chapter03.store.advice.ThankAdvice"></bean>
+	<bean id="onePerCustIncept" class="com.springinaction.chapter03.store.advice.OnePerCustomerInterceptor"></bean>
+	<bean id="onePerCustIncept2" class="com.springinaction.chapter03.store.advice.OnePerCustomerInterceptor2"></bean>
+	
+	<bean id="appleMarket" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces" value="com.springinaction.chapter03.store.Market" />
+		<property name="target" ref="appleMarketTarget" />
+		<property name="interceptorNames">
+			<list>
+				<value>onePerCustIncept</value>
+<!-- 				<value>onePerCustIncept2</value> -->
+				<value>thankAdvice</value>
+				<value>welcomeAdvice</value>
+				
+			</list>
+		</property>
+	</bean>
+</beans>
