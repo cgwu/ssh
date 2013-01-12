@@ -55,7 +55,7 @@ default-autowire="byName" default-lazy-init="true">
 	</bean>
 	
 	<bean id="onePerCustomerAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
-		<property name="pattern" value=".*buy.*S.+"></property>
+		<property name="pattern" value=".+buy.*S.+"></property>
 		<property name="advice">
 			<ref bean="onePerCustIncept"/>
 		</property>
