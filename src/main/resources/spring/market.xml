@@ -6,7 +6,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd"
 default-autowire="byName" default-lazy-init="true">
 
 	<bean id="appleMarketTarget" class="com.springinaction.chapter03.store.AppleMarket">
-		<property name="isEmpty" value="false"></property>
+		<property name="isEmpty" value="true"></property>
 	</bean>
 
 	<bean id="zhangsan" class="com.springinaction.chapter03.store.Customer">
@@ -18,12 +18,17 @@ default-autowire="byName" default-lazy-init="true">
 	<bean id="thankAdvice" class="com.springinaction.chapter03.store.advice.ThankAdvice"></bean>
 	<bean id="onePerCustIncept" class="com.springinaction.chapter03.store.advice.OnePerCustomerInterceptor"></bean>
 	<bean id="onePerCustIncept2" class="com.springinaction.chapter03.store.advice.OnePerCustomerInterceptor2"></bean>
+	<bean id="brokenExcept" class="com.springinaction.chapter03.store.advice.BrokenExceptionAdvice"></bean>
+	<bean id="soldoutExcept" class="com.springinaction.chapter03.store.advice.SoldOutExceptionAdvice"></bean>
+	
 	
 	<bean id="appleMarket" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<property name="proxyInterfaces" value="com.springinaction.chapter03.store.Market" />
 		<property name="target" ref="appleMarketTarget" />
 		<property name="interceptorNames">
 			<list>
+				<value>brokenExcept</value>
+				<value>soldoutExcept</value>
 				<value>onePerCustIncept</value>
 <!-- 				<value>onePerCustIncept2</value> -->
 				<value>thankAdvice</value>
