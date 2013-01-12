@@ -54,11 +54,19 @@ default-autowire="byName" default-lazy-init="true">
 		</property>
 	</bean>
 	
+	<bean id="onePerCustomerAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="pattern" value=".*buy.*S.+"></property>
+		<property name="advice">
+			<ref bean="onePerCustIncept"/>
+		</property>
+	</bean>
+	
 	<bean id="appleMarketUseAdvisor" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<property name="proxyInterfaces" value="com.springinaction.chapter03.store.Market" />
 		<property name="target" ref="appleMarketTarget" />
 		<property name="interceptorNames">
 			<list>
+				<value>onePerCustomerAdvisor</value>
 				<value>welcomeAdvisor</value>
 				<value>thankAdvisor</value>
 			</list>

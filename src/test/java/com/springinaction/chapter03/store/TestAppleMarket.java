@@ -27,7 +27,9 @@ public class TestAppleMarket {
 //		
 		Apple apple =null;
 		try {
+			System.out.println("######################");
 			apple = market.buyApple(zhangsan);
+			System.out.println("######################");
 			market.buySth();
 //			Apple apple2 = market.buyApple(zhangsan);
 		} catch (Exception e) {
