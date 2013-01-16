@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="someTarget" class="com.springinaction.chapter03.introduction.Some" />
+	<bean id="otherIntroduction" class="com.springinaction.chapter03.introduction.OtherIntroduction" />
+
+	<bean id="otherAdvisor"
+		class="org.springframework.aop.support.DefaultIntroductionAdvisor">
+		<constructor-arg index="0">
+			<ref bean="otherIntroduction" />
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>com.springinaction.chapter03.introduction.IOther</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="some" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<value>com.springinaction.chapter03.introduction.ISome</value>
+		</property>
+		<property name="target">
+			<ref bean="someTarget" />
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>otherAdvisor</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>
