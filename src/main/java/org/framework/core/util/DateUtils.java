@@ -72,6 +72,20 @@
    public static Date parseDate(String text) {
      return parseDate(text, new String[] { "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss" });
    }
+   
+   public static Date parseDate(String text, String dateFormatPattern) {
+       if (dateFormatPattern != null)
+       {
+           try {
+             SimpleDateFormat parser = new SimpleDateFormat(dateFormatPattern);
+             return parser.parse(text);
+           }
+           catch (Exception localException)
+           {
+           }
+       }
+       throw new RuntimeException("Unparseable date: " + text);
+     }
  
    public static Date parseDate(String text, String[] dateFormatPatterns) {
      if (dateFormatPatterns != null)

@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd"
-	default-autowire="no" default-lazy-init="true">
+	default-autowire="byName" default-lazy-init="false">
 
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -30,4 +30,10 @@ http://www.springframework.org/schema/beans/spring-beans.xsd"
 		<property name="validationQuery" value="select 1 "/>
 		 -->
 	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="personDao" class="com.springinaction.chapter04.dao.PersonDaoImpl"></bean>
+	
 </beans>
