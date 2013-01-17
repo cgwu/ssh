@@ -1,8 +1,6 @@
 package com.springinaction.chapter04.dao;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.Date;
+import static org.junit.Assert.*;
 
 import org.apache.log4j.Logger;
 import org.framework.core.util.DateUtils;
@@ -26,4 +24,22 @@ public class TestPersonDaoImpl {
 	assertEquals(1, iAffected);
     }
 
+    @Test
+    public void testFindById() {
+	ApplicationContext context = new ClassPathXmlApplicationContext("spring/database.xml");
+	IPersonDao personDao = context.getBean("personDao", IPersonDao.class);
+	
+	Person p = personDao.findById(1L);
+	log.info(p.getName());
+	log.info(p.getBirthday());
+	
+	log.info("done");
+	assertTrue(p.getId().equals(1L));
+    }
+    
+    @Test
+    public void testFoo() {
+	log.info("test foo");
+	assertTrue(true);
+    }
 }

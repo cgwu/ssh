@@ -4,4 +4,6 @@ public interface IPersonDao {
 
     public int add(Person p);
     
+    public Person findById(Long id);
+    
 }
