@@ -29,12 +29,12 @@ public class TestPersonDaoImpl {
 	ApplicationContext context = new ClassPathXmlApplicationContext("spring/database.xml");
 	IPersonDao personDao = context.getBean("personDao", IPersonDao.class);
 	
-	Person p = personDao.findById(1L);
+	Person p = personDao.findById(2L);
 	log.info(p.getName());
 	log.info(p.getBirthday());
 	
 	log.info("done");
-	assertTrue(p.getId().equals(1L));
+	assertTrue(p.getId().equals(2L));
     }
     
     @Test
