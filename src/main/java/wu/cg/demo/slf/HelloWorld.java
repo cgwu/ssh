@@ -7,8 +7,8 @@ import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.core.util.StatusPrinter;
 
 public class HelloWorld {
-    static final Logger logger = LoggerFactory.getLogger(HelloWorld.class);
-//    static final Logger logger = LoggerFactory.getLogger("ABC");
+//    static final Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+    static final Logger logger = LoggerFactory.getLogger("ABC");
     public static void main(String[] args) {
 	logger.debug("Hello world.我的日志内容new");
 	doFoo();
