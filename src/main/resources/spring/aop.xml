@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation=
+		"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+     	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!-- 	<bean id="logAspect" class="wu.cg.demo.spring.MessageAroundAspect" /> -->
+	<bean id="log1BeforeAdvice" class="wu.cg.demo.spring.MessageFirstAdvice" />
+<!-- 	<bean id="log2BeforeAdvice" class="wu.cg.demo.spring.MessageAnotherAdvice" /> -->
+	
+	<bean id="logAround1Advice" class="wu.cg.demo.spring.MessageAround1Advice" />
+<!-- 	<bean id="logAround2Advice" class="wu.cg.demo.spring.MessageAround2Advice" /> -->
+	
+	<bean id="communicator" class="wu.cg.demo.spring.MessageCommunicator" />
+	<aop:aspectj-autoproxy />
+	
+</beans>
