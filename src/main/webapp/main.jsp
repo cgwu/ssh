@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1>main.jsp</h1>
+Session.now: ${now }
 </body>
 </html>
