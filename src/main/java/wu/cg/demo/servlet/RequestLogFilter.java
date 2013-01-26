@@ -42,11 +42,16 @@ public class RequestLogFilter implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 		HttpServletRequest req = (HttpServletRequest) request;
+		/*
+		 * request.getServletPath() - /a.jsp request.getContextPath() - /工程名
+		 * request.getRequestURI() - /工程名/a.jsp request.getRequestURL() -
+		 * http://127.0.0.1:8080/工程名/a.jsp
+		 */
 		String uri = req.getRequestURI();
 		log.info("begin request URI:{}", uri);
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
-		log.info("end request URI:{}", uri);
+		log.info("end request URL:{}", req.getRequestURL());
 	}
 
 	/**
