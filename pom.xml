@@ -189,7 +189,7 @@
 		      <path>/</path>
 		      <reloadable>true</reloadable>
 <!-- 		      <disableURLRewriting>false</disableURLRewriting> -->
-				<cookies>false</cookies>
+<!-- 				<cookies>false</cookies> -->
 	      </configuration>
         </plugin>
 <!-- 
