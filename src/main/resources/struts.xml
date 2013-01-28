@@ -22,8 +22,8 @@
 
         <action name="index">
             <result type="redirectAction">
-                <param name="actionName">HelloWorld</param>
-                <param name="namespace">/example</param>
+                <param name="actionName">Name</param>
+                <param name="namespace">/chapterTwo</param>
             </result>
         </action>
     </package>

@@ -178,6 +178,20 @@
 				</configuration>
 			</plugin>
 
+ 		<plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.0</version>
+          <configuration>
+		      <!-- http port -->
+		      <port>9090</port>
+		      <!-- application path always starts with /-->
+		      <path>/</path>
+		      <reloadable>true</reloadable>
+<!-- 		      <disableURLRewriting>false</disableURLRewriting> -->
+				<cookies>false</cookies>
+	      </configuration>
+        </plugin>
 <!-- 
     <plugin>
        <groupId>org.codehaus.mojo</groupId>

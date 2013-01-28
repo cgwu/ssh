@@ -33,7 +33,7 @@ public class FirstServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.info("doGet开始");
 		response.setContentType("text/html;charset=utf-8");
-		response.getWriter().write("Hello,中国,time now:"+ new Date());
+		response.getWriter().write("喂,中国中间是:"+ new Date());
 		request.getSession().setAttribute("now", new Date());
 	}
 
