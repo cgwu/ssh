@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<!-- 
+		This package contains the non-secure portions of the Struts 2 Portfolio.  This allows these
+		public actions to share inheritance of things specialized to the non-secure portions of the application.
+		
+		Note, at this point, the Struts 2 Portfolio doesn't actually have any security functionality to
+		check credentials or restrict access, but we have already packaged in a way that anticipates these
+		needs.
+	-->
+
+	<package name="chapterThreeImageUpload" namespace="/chapterThree"
+		extends="struts-default">
+
+		<action name="AddImage">
+			<result>/chapterThree/ImageUploadForm.jsp</result>
+		</action>
+		
+		<action name="ImageUpload" class="com.strutsinaction.chapter03.ImageUpload">
+			<result>/chapterThree/ImageAdded.jsp</result>
+			<result name="input">/chapterThree/ImageUploadForm.jsp</result>
+		</action>
+
+	</package>
+
+</struts>

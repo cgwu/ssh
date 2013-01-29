@@ -29,7 +29,7 @@
     </package>
 
     <include file="struts/chapterTwo.xml"/>
-
+ 	<include file="struts/chapterThree.xml"/>
     <!-- Add packages here -->
 
 </struts>
