@@ -25,6 +25,7 @@
    		<struts-version>2.3.8</struts-version>
    		<slf4j.version>1.7.2</slf4j.version>
    		<logback.version>1.0.9</logback.version>
+   		<aspectj-version>1.6.11</aspectj-version>   		
 	</properties>
 
 	<!-- TODO 2 Configure repo2.maven.org as a repository. -->
@@ -110,13 +111,13 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>1.7.1</version>
+			<version>${aspectj-version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.7.1</version>
+			<version>${aspectj-version}</version>
 		</dependency>
             
 		<dependency>
@@ -192,67 +193,25 @@
 <!-- 				<cookies>false</cookies> -->
 	      </configuration>
         </plugin>
-<!-- 
-    <plugin>
-       <groupId>org.codehaus.mojo</groupId>
-       <artifactId>aspectj-maven-plugin</artifactId>
-       <version>1.4</version>
-       <executions>
-         <execution>
-           <goals>
-             <goal>compile</goal>
-             <goal>test-compile</goal>
-           </goals>
-         </execution>
-       </executions>
-       <configuration>
-         <source>${maven.compiler.source}</source>
-         <target>${maven.compiler.target}</target>
-       </configuration>
-     </plugin>
- -->
-<!-- 
-	<plugin>
-		<groupId>org.codehaus.mojo</groupId>
-		<artifactId>aspectj-maven-plugin</artifactId>
-		<executions>
-			<execution>
-				<goals>
-					<goal>compile</goal>
-				</goals>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</execution>
-		</executions>
-	</plugin>
- -->
-
-			<!-- 
-			<plugin>
-			    <artifactId>maven-compiler-plugin</artifactId>
-			    <version>2.3.1</version>
-			    <configuration>
-			        <compilerId>aspectj</compilerId>
-			    </configuration>
-			     <executions>
-		          <execution>
-		            <goals>
-		              <goal>compile</goal>
-		              <goal>test-compile</goal>
-		            </goals>
-		          </execution>
-		        </executions>
-			    <dependencies>
-			        <dependency>
-			            <groupId>org.codehaus.plexus</groupId>
-			            <artifactId>plexus-compiler-aspectj</artifactId>
-			            <version>1.6</version>
-			        </dependency>
-			    </dependencies>
-			</plugin>
-			 -->
+        
+	    <plugin>
+	       <groupId>org.codehaus.mojo</groupId>
+	       <artifactId>aspectj-maven-plugin</artifactId>
+	       <version>1.4</version>
+	       <executions>
+	         <execution>
+	           <goals>
+	             <goal>compile</goal>
+	             <goal>test-compile</goal>
+	           </goals>
+	         </execution>
+	       </executions>
+	       <configuration>
+	         <source>${maven.compiler.source}</source>
+	         <target>${maven.compiler.target}</target>
+	       </configuration>
+	     </plugin>
+	    
 		</plugins>
 	</build>
 

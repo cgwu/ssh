@@ -6,10 +6,9 @@ import org.apache.log4j.Logger;
 import org.springframework.aop.MethodBeforeAdvice;
 
 import com.springinaction.chapter01.hello.GreetingServiceImpl;
-import com.springinaction.chapter01.hello.TestGreetingServiceImpl;
 
 public class SayGreetingLogBeforeAdvice implements MethodBeforeAdvice {
-    static Logger log = Logger.getLogger(TestGreetingServiceImpl.class);
+    static Logger log = Logger.getLogger(SayGreetingLogBeforeAdvice.class);
 
     public void before(Method method, Object[] args, Object target)
 	    throws Throwable {
