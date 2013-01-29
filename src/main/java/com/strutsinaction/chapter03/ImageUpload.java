@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +32,7 @@ public class ImageUpload extends ActionSupport {
 		try {
 			// getPortfolioService().addImage(getPic(), getPicFileName(),
 			// fileSystemPath);
-			log.debug("FileName:{},FileLength:{}",this.getPicFileName(),this.getPic().getTotalSpace());
+			log.debug("FileName:{},FileLength:{}",this.getPicFileName(),  FileUtils.sizeOf(this.getPic()));
 			/*
 			 * add image to the portfolio and save image file to local
 			 * filesystem
