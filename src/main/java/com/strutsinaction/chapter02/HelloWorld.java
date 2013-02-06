@@ -1,4 +1,4 @@
-package com.strutsinaction.chapter01;
+package com.strutsinaction.chapter02;
 
 import java.util.Map;
 
@@ -12,35 +12,39 @@ import org.apache.struts2.util.ServletContextAware;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HelloWorld implements ServletContextAware, ServletRequestAware, ParameterAware, RequestAware {
+public class HelloWorld implements ServletContextAware, ServletRequestAware,
+	ParameterAware, RequestAware {
     static Logger log = LoggerFactory.getLogger(HelloWorld.class);
-	    
+
     private static final String GREETING = "您好: ";
 
     private ServletContext context;
     private HttpServletRequest request;
     private Map<String, String[]> parameters;
-    private Map<String, Object> requestMap;	//struts2 的Request包装
-    
+    private Map<String, Object> requestMap; // struts2 的Request包装
+
     public String execute() {
 	log.info(context.getServerInfo());
-	log.info("项目根目录:{}",context.getRealPath("/"));
-	log.info("请求的相对路径:{}",request.getRequestURI());
-	log.info("请求的完全路径:{}",request.getRequestURL());
-	
-	setCustomGreeting(GREETING + getName());
+	log.info("项目根目录:{}", context.getRealPath("/"));
+	log.info("请求的相对路径:{}", request.getRequestURI());
+	log.info("请求的完全路径:{}", request.getRequestURL());
+
+	setCustomGreeting(GREETING + model.getName());
 	return "SUCCESS";
     }
 
-    private String name;
+    private User model;
 
-    public String getName() {
-	return name;
-    }
-
-    public void setName(String name) {
-	this.name = name;
-    }
+    //
+    // private String name;
+    //
+    // public String getName() {
+    // return name;
+    // }
+    //
+    // public void setName(String name) {
+    // this.name = name;
+    // }
 
     private String customGreeting;
 
@@ -70,5 +74,13 @@ public class HelloWorld implements ServletContextAware, ServletRequestAware, Par
     @Override
     public void setRequest(Map<String, Object> request) {
 	requestMap = request;
+    }
+
+    public User getModel() {
+        return model;
+    }
+
+    public void setModel(User model) {
+        this.model = model;
     }
 }

@@ -167,7 +167,7 @@
 					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<stopPort>9999</stopPort>
 					<webApp>
-						<contextPath>/w</contextPath>
+						<contextPath>/web</contextPath>
 					</webApp>
 					 <connectors>
 				       <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
@@ -187,13 +187,14 @@
 		      <!-- http port -->
 		      <port>9090</port>
 		      <!-- application path always starts with /-->
-		      <path>/</path>
+		      <path>/web</path>
 		      <reloadable>true</reloadable>
 <!-- 		      <disableURLRewriting>false</disableURLRewriting> -->
 <!-- 				<cookies>false</cookies> -->
 	      </configuration>
         </plugin>
         
+        <!--  测试阶段暂时不需要 去编织,太耗时
 	    <plugin>
 	       <groupId>org.codehaus.mojo</groupId>
 	       <artifactId>aspectj-maven-plugin</artifactId>
@@ -211,7 +212,8 @@
 	         <target>${maven.compiler.target}</target>
 	       </configuration>
 	     </plugin>
-	    
+	     -->
+	     
 		</plugins>
 	</build>
 

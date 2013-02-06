@@ -16,7 +16,14 @@
 	  <hr>
 	    <h3>Custom Greeting Page</h3>      
         <h4><s:property value="customGreeting"/></h4>
+        <h4>年龄 : <s:property value="model.age" /></h4>
+        <s:if test="model.age<10">太小了吧!</s:if>
+        <s:elseif test="model.age<30">年轻人啊</s:elseif>
+        <s:else>老人家了</s:else>
       <hr>
-	</body>
-	
+      判断名字: 
+      <s:if test="model.name == @wu.cg.demo.constant.Foo@USER_NAME">欢迎您主人,${model.name }</s:if>
+      <s:else>不认识您</s:else>
+      
+	</body>	
 </html>

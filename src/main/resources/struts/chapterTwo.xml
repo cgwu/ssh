@@ -19,12 +19,15 @@
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
+		
 		<action name="Name">
 			<result>/chapterTwo/NameCollector.jsp</result>
 		</action>
-		<action name="HelloWorld" class="com.strutsinaction.chapter01.HelloWorld">
+		
+		<action name="HelloWorld" class="com.strutsinaction.chapter02.HelloWorld">
 			<interceptor-ref name="defaultStackWithTimer"></interceptor-ref>
 			<result name="SUCCESS">/chapterTwo/HelloWorld.jsp</result>
 		</action>
+		
 	</package>
 </struts>
