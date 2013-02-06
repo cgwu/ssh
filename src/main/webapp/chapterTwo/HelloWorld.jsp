@@ -23,7 +23,7 @@
       <hr>
       判断名字: 
       <s:if test="model.name == @wu.cg.demo.constant.Foo@USER_NAME">欢迎您主人,${model.name }</s:if>
-      <s:else>不认识您</s:else>
+      <s:else>不认识您: ${model.name }</s:else>
       
 	</body>	
 </html>

@@ -1,5 +1,7 @@
 package com.strutsinaction.chapter02;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -12,6 +14,8 @@ import org.apache.struts2.util.ServletContextAware;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.opensymphony.xwork2.Action;
+
 public class HelloWorld implements ServletContextAware, ServletRequestAware,
 	ParameterAware, RequestAware {
     static Logger log = LoggerFactory.getLogger(HelloWorld.class);
@@ -23,6 +27,10 @@ public class HelloWorld implements ServletContextAware, ServletRequestAware,
     private Map<String, String[]> parameters;
     private Map<String, Object> requestMap; // struts2 的Request包装
 
+    private User model;
+
+    private Map rsp;
+
     public String execute() {
 	log.info(context.getServerInfo());
 	log.info("项目根目录:{}", context.getRealPath("/"));
@@ -33,7 +41,17 @@ public class HelloWorld implements ServletContextAware, ServletRequestAware,
 	return "SUCCESS";
     }
 
-    private User model;
+    @SuppressWarnings("unchecked")
+    public String testAjax() {
+	rsp = new HashMap();
+	rsp.put("code", 1);
+	rsp.put("msg", "成功use Method 3");
+	rsp.put("model", model);
+	rsp.put("now", new Date());
+	rsp.put(110, "中国");
+
+	return Action.SUCCESS;
+    }
 
     //
     // private String name;
@@ -77,10 +95,14 @@ public class HelloWorld implements ServletContextAware, ServletRequestAware,
     }
 
     public User getModel() {
-        return model;
+	return model;
     }
 
     public void setModel(User model) {
-        this.model = model;
+	this.model = model;
+    }
+
+    public Map getRsp() {
+	return rsp;
     }
 }
