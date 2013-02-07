@@ -18,6 +18,16 @@
 				<interceptor-ref name="timer"></interceptor-ref>
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
+
+			<interceptor-stack name="myValidationWorkflowStack">
+				<interceptor-ref name="basicStack" />
+				<interceptor-ref name="validation">
+					<param name="validateAnnotatedMethodOnly">true</param>
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow" />
+			</interceptor-stack>
+            
 		</interceptors>
 		
 		<action name="Name">
@@ -29,8 +39,9 @@
 			<result name="SUCCESS">/chapterTwo/HelloWorld.jsp</result>
 		</action>
 		
-		<action name="TestAjax" class="com.strutsinaction.chapter02.HelloWorld" method="testAjax">
-<!-- 		<action name="TestAjax" class="com.strutsinaction.chapter02.TestAjax" > -->
+<!-- 		<action name="TestAjax" class="com.strutsinaction.chapter02.HelloWorld" method="testAjax"> -->
+		<action name="TestAjax" class="com.strutsinaction.chapter02.TestAjax" >
+<!-- 			<interceptor-ref name="myValidationWorkflowStack"></interceptor-ref> -->
 			<result type="json">
 				<!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->
 				<!-- 默认将会序列所有有返回值的getter方法的值，而无论该方法是否有对应属性 -->

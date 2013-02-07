@@ -32,7 +32,8 @@
 		<s:form action="HelloWorld" namespace="/chapterTwo">
 	    	<s:textfield name="model.name" label="Your name"/>
 	    	<s:textfield name="model.age" label="Your age"/>
-    	<s:submit/>
+	    	<s:textfield name="customGreeting" label="CustomGreeting"/>
+	    	<s:submit/>
 		</s:form>
 	    <hr>
 	    

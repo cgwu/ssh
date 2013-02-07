@@ -15,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.opensymphony.xwork2.Action;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 
 public class TestAjax {
     static Logger log = LoggerFactory.getLogger(TestAjax.class);
@@ -25,7 +27,7 @@ public class TestAjax {
     private Map rsp;
 
     public String execute() {
-	setCustomGreeting(GREETING + model.getName());
+//	setCustomGreeting(GREETING + model.getName());
 	
 	rsp = new HashMap();
 	rsp.put("code", 1);
@@ -33,6 +35,7 @@ public class TestAjax {
 	rsp.put("model", model);
 	rsp.put("now", new Date());
 	rsp.put(110, "中国");
+	rsp.put("greetingString", this.getCustomGreeting());
 	return Action.SUCCESS;
     }
 
@@ -42,6 +45,7 @@ public class TestAjax {
 	return customGreeting;
     }
 
+    @RequiredStringValidator(type = ValidatorType.FIELD, message="customGreeting is required.")
     public void setCustomGreeting(String customGreeting) {
 	this.customGreeting = customGreeting;
     }
