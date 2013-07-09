@@ -221,20 +221,27 @@
 				</configuration>
 			</plugin>
 
- 		<plugin>
-          <groupId>org.apache.tomcat.maven</groupId>
-          <artifactId>tomcat7-maven-plugin</artifactId>
-          <version>2.0</version>
-          <configuration>
-		      <!-- http port -->
-		      <port>9090</port>
-		      <!-- application path always starts with /-->
-		      <path>/web</path>
-		      <reloadable>true</reloadable>
-<!-- 		      <disableURLRewriting>false</disableURLRewriting> -->
-<!-- 				<cookies>false</cookies> -->
-	      </configuration>
-        </plugin>
+<!--
+在生产环境配置cookieless,${Tomcat_Home}\conf\server.xml:
+	<Context path="/web" docBase="D:\Workspace\Tests\Eclipse\ssh-template\target\ssh-template-0.0.1-SNAPSHOT"
+		reloadable="false" cookies="false" />
+-->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.0</version>
+				<configuration>
+					<!-- http port -->
+					<port>9090</port>
+					<!-- application path always starts with / -->
+					<path>/web</path>
+					<reloadable>true</reloadable>
+					<!-- 
+					<disableURLRewriting>false</disableURLRewriting>
+					<cookies>false</cookies>
+					 -->
+				</configuration>
+			</plugin>
         
         <!--  测试阶段暂时不需要 去编织,太耗时
 	    <plugin>
