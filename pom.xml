@@ -30,6 +30,7 @@
    		<hibernate-annotations.version>3.5.6-Final</hibernate-annotations.version>
 		
    		<slf4j.version>1.7.2</slf4j.version>
+   		<slf4j-log4j12.version>1.7.5</slf4j-log4j12.version>
    		<logback.version>1.0.9</logback.version>
    		<mail.version>1.4.7</mail.version>
    		<aspectj.version>1.6.11</aspectj.version>
@@ -81,6 +82,13 @@
 			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
+		<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j-log4j12.version}</version>
+		</dependency>
+		
+		<!-- 
+		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
 			<version>${logback.version}</version>
@@ -90,13 +98,16 @@
 			<artifactId>logback-classic</artifactId>
 			<version>${logback.version}</version>
 		</dependency>
-		<!-- logback-access module: integrates with Servlet containers to provide HTTP-access log functionality -->
+		
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-access</artifactId>
 			<version>${logback.version}</version>
 		</dependency>
+		-->
+		<!-- logback-access module: integrates with Servlet containers to provide HTTP-access log functionality -->
         <!-- 日志组件 slf4j end -->
+        
         <dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>

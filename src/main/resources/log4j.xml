@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="_Console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyyMMdd HHmmss.SSS}]{%t}&lt;%p>%l %m%n" />
+		</layout>
+	</appender>
+	<!-- 按日期的循环文件存放地 -->
+	<appender name="_ROLLFILE" class="org.apache.log4j.DailyRollingFileAppender">
+		<errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<param name="File" value="logs/logFile.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd'.log'"/>
+		<param name="Append" value="true"/>
+		<param name="Encoding" value="GBK"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="{%t}&lt;%p>[%d{yyyyMMdd HHmmss.SSS}]%l %m%n" />
+		</layout>
+	</appender>
+		
+	<logger name="org.springframework" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="_Console" />
+		<!--<appender-ref ref="_ROLLFILE" />-->
+	</logger>
+	
+	<logger name="org.hibernate" additivity="false">
+		<level value="info" />
+		<appender-ref ref="_Console" />
+		<!--<appender-ref ref="_ROLLFILE" />-->
+	</logger>
+	
+	<logger name="com.caucho.hessian" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="_Console" />
+		<!--<appender-ref ref="_ROLLFILE" />-->
+	</logger>	
+	
+	<logger name="com.opensymphony.xwork2" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="_Console" />
+		<!--<appender-ref ref="_ROLLFILE" />-->
+	</logger>
+	
+	<logger name="org.quartz" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="_Console" />
+		<!--<appender-ref ref="_ROLLFILE" />-->
+	</logger>
+	
+	<logger name="org.apache.struts2" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="_Console" />
+		<!--<appender-ref ref="_ROLLFILE" />-->
+	</logger>	
+	
+	<logger name="freemarker" additivity="false">
+		<level value="warn" />
+		<appender-ref ref="_Console" />
+		<!--<appender-ref ref="_ROLLFILE" />-->
+	</logger>	
+	
+	<logger name="org.framework" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="_Console" />
+		<!--<appender-ref ref="_ROLLFILE" />-->
+	</logger>
+	<!-- 
+	<logger name="wu.cg" additivity="false">
+		<level value="trace" />
+		<appender-ref ref="_Console" />
+		<appender-ref ref="_ROLLFILE" />
+	</logger>
+	 -->
+	<root>
+		<level value="info" />
+		<appender-ref ref="_Console" />
+		<appender-ref ref="_ROLLFILE" />
+	</root>
+</log4j:configuration>
